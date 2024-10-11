@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+<form class="uploadButton" id="uploadForm" enctype="multipart/form-data">
+    <div class="file-upload">
+        <input name="file" id="file-upload" type="file" required>
+        <button class="button">Выбрать файл</button>
+        <span class="file-name">Файл не выбран</span>
+    </div>
+    <input class="submit_button" type="submit" value="Загрузить">
+</form>
+<h2 id="message"></h2>
+<script>
+document.getElementById('file-upload').addEventListener('change', function() {
+    const fileName = this.files[0] ? this.files[0].name : 'Файл не выбран';
+    document.querySelector('.file-upload .file-name').textContent = fileName;
+    if (this.files[0]) {
+      document.querySelector('.file-upload .button').textContent = 'Файл выбран';
+    }
+});
+      document.getElementById('uploadForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const formData = new FormData(this);
+
+        fetch('/upload_2db/', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('message').textContent = `Файл ${data.filename} успешно загружен`;
+        })
+        .catch(error => {
+            document.getElementById('message').textContent = 'Произошла ошибка при загрузке файла';
+        });
+    });
+</script>
+{% endblock %}

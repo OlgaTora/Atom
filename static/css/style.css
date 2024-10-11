@@ -1,0 +1,167 @@
+h1{
+    color: #0000CD;
+    font-size: 45px;
+    text-align: center;
+}
+
+h2{
+    color: #2efefe;
+    font-size: 35px;
+    text-align: center;
+}
+
+body{
+  background-color: #000;
+  background-image: url('images/timeline-gradient-compressed.webp');
+  margin: 0;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  font-family: Atom,sans-serif;
+}
+
+form.uploadButton {
+  padding: 60px;
+  color: #fff;
+  font-size: 45px;
+  flex-direction: column;
+  gap: 40px;
+  display: flex;
+  align-items: center;
+}
+
+input[type=text] {
+  box-sizing: border-box;
+  border-radius: 4px;
+}
+
+.file-upload{
+  overflow: hidden;
+  display: inline-block;
+  width: 400px;
+  color: #fff;
+  text-align: center;
+  line-height: 40px;
+  cursor: pointer;
+}
+
+.file-upload input[type="file"] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 100px;
+    opacity: 0;
+}
+
+.file-upload .button {
+  width: 400px;
+  height: 72px;
+  border-radius: 40px;
+  background-color: #0000CD;
+  font-size: 45px;
+}
+
+.file-upload .button:hover {
+  background-color: #2efefe;
+  transition: 0.3s;
+}
+
+.file-upload .file-name {
+    display: inline-block;
+    font-size: 30px;
+}
+
+.submit_button{
+  width: 400px;
+  font-size: 45px;
+  background: #0000CD;
+  color: #000;
+  border-radius: 40px;
+  height: 72px;
+}
+
+.submit_button:hover {
+  background-color: #2efefe;
+  transition: 0.3s;
+}
+
+.file-content{
+  margin-top: 20px;
+  padding: 10px;
+  border: 2px solid #0000CD;
+  text-align: justify;
+  width: 90%;
+  max-height: 600px;
+  overflow-y: auto;
+  color: #fff;
+  font-size: 25px;
+}
+
+.btn-arrow {
+    margin-left: 25px;
+    display: inline-block;
+    padding: 20px;
+    position: relative;
+    background: #0000CD;
+    color: #fff;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.75);
+}
+.btn-arrow span {
+    position: relative;
+    z-index: 1;
+}
+.btn-arrow:after,
+.btn-arrow:before {
+    content:'';
+    position: absolute;
+    left: -20px;
+    top: 50%;
+    background: #0000CD;
+    width: 40px;
+    height: 40px;
+    margin-top: -20px;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.75);
+    z-index: -1;
+    transform: rotate(45deg);
+}
+.btn-arrow:before {
+    z-index: 1;
+    box-shadow: none;
+}
+.btn-arrow:hover,
+.btn-arrow:hover:after,
+.btn-arrow:hover:before {
+    background: #2efefe;
+}
+
+.navbar {
+    background-color: #000;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar li {
+    float: right;
+}
+
+.navbar li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 25px;
+}
+
+.navbar li a:hover {
+    background-color: #575757;
+}
