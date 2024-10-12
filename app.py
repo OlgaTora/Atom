@@ -35,20 +35,17 @@ async def upload_file(request: Request, file: UploadFile):
         content = await file.read()
         await out_file.write(content)
     doc = Document(file_path)
-    # text = []
-    # for paragraph in doc.paragraphs:
-    #     text.append(paragraph.text)
-    # text = "\n".join(text)
+    text = []
+    for paragraph in doc.paragraphs:
+        text.append(paragraph.text)
+    text = "\n".join(text)
     vector_store = VectorStore()
     db = vector_store.load_vectordb()
-    docs = db.similarity_search(doc.paragraphs[5].text, k=5)
+    docs = db.similarity_search(text, k=5)
     return templates.TemplateResponse("result.html",
                                       {"request": request,
-                                       "text_file": doc.paragraphs[7].text,
                                        "content": "\n\n".join(doc.page_content for doc in docs),
                                        "filename": file.filename, })
-
-
 
 
 @app.get("/", tags=["start_page"], response_class=HTMLResponse)

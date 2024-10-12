@@ -1,14 +1,14 @@
 from langchain_community.document_loaders import TextLoader, Docx2txtLoader, PyPDFLoader
-from langchain_text_splitters import RecursiveCharacterTextSplitter
+from langchain_text_splitters import CharacterTextSplitter
 
 from SETTINGS import chunk_size, chunk_overlap
 
 
 class Splitter:
     def __init__(self, file_name: str):
-        self.data_splitter = RecursiveCharacterTextSplitter(
+        self.data_splitter = CharacterTextSplitter(
             chunk_size=chunk_size,
-            chunk_overlap=chunk_overlap,
+            # chunk_overlap=chunk_overlap,
             add_start_index=True,
             is_separator_regex=False,
             strip_whitespace=True

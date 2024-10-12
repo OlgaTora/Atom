@@ -3,9 +3,7 @@
 <a href="{{ url_for('main') }}" class="btn-arrow"><span>Проверить новый файл</span></a>
 <h1>Результат обработки ТЗ</h1>
 <h2>Наименование файла: {{ filename }}</h2>
-<p>{{ text_file }}</p>
 <div class="file-content">
     <pre>{{ content }}</pre>
 </div>
 {% endblock %}
-
