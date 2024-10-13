@@ -28,7 +28,7 @@ async def docs():
     return RedirectResponse(url="/docs")
 
 
-@app.post("/upload/", response_class=HTMLResponse)
+@app.post("/upload/", tags=["results of check"], response_class=HTMLResponse)
 async def upload_file(request: Request, file: UploadFile):
     file_path = f"storage/{file.filename}"
     async with aiofiles.open(file_path, 'wb') as out_file:
@@ -48,7 +48,7 @@ async def upload_file(request: Request, file: UploadFile):
                                        "filename": file.filename, })
 
 
-@app.get("/", tags=["start_page"], response_class=HTMLResponse)
+@app.get("/", tags=["load document for check"], response_class=HTMLResponse)
 async def main(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
@@ -64,7 +64,7 @@ async def upload_file_2db(file: UploadFile = File(...)):
     with open(file_path, "wb") as f:
         f.write(await file.read())
     splitter = Splitter(file_path)
-    documents = splitter.process_files()
+    documents = splitter.clean_files()
     vector_store = VectorStore()
     vector_store.add_2vectordb(documents)
     return {"filename": file.filename}

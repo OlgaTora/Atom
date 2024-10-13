@@ -12,10 +12,12 @@ class VectorStore:
         self.embeddings = HuggingFaceEmbeddings(model_name=MODEL)
 
     def load_vectordb(self):
+        """Load to vector database FAISS"""
         db = FAISS.load_local(DB_PATH, self.embeddings, allow_dangerous_deserialization=True)
         return db
 
     def add_2vectordb(self, documents: Any):
+        """Add new document to vector database FAISS"""
         db = FAISS.from_documents(documents, self.embeddings)
         if os.path.exists(DB_PATH):
             local_index = self.load_vectordb()
